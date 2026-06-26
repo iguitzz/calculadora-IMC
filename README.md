@@ -8,7 +8,6 @@ Sistema de cálculo de **Índice de Massa Corporal (IMC)** via linha de comando,
 
 ```
 calculadora-imc/
-├── src/main/py/
 │   ├── CalculadoraIMC.py           ← interface (contrato abstrato)
 │   ├── PessoaBase.py               ← classe abstrata (ABC)
 │   ├── Pessoa.py                   ← herança + encapsulamento
