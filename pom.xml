@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    pom.xml — Gerenciamento de Dependências do Projeto Calculadora IMC
+    
+    Mesmo sendo um projeto Python puro, este arquivo documenta:
+      - Metadados do projeto (groupId, artifactId, version)
+      - Dependências Python equivalentes (para referência)
+      - Instruções de execução
+    
+    Para projetos Python, use requirements.txt ou pyproject.toml.
+    Este pom.xml serve como documentação de dependências no padrão Maven.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ── Identificação do Projeto ─────────────────────────────────────── -->
+    <groupId>br.edu.calculadora</groupId>
+    <artifactId>calculadora-imc</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Calculadora IMC</name>
+    <description>
+        Sistema de Cálculo de Índice de Massa Corporal (IMC) implementado
+        em Python, demonstrando os pilares de Programação Orientada a Objetos:
+        Herança, Polimorfismo, Composição, Encapsulamento, Interfaces,
+        Recursão e Exceções Personalizadas.
+    </description>
+
+    <!-- ── Propriedades Gerais ───────────────────────────────────────────── -->
+    <properties>
+        <python.version>3.8+</python.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.main.module>src/main/py/Main.py</project.main.module>
+    </properties>
+
+    <!-- ── Dependências Python (referência) ─────────────────────────────── -->
+    <!--
+        Este projeto utiliza APENAS a biblioteca padrão do Python (stdlib).
+        Não há dependências externas a instalar.
+
+        Módulos stdlib utilizados:
+          - abc         : Classes abstratas (ABC, abstractmethod)
+          - dataclasses : RegistroIMC com @dataclass
+          - datetime    : Timestamps nos registros do histórico
+          - typing      : Anotações de tipo (List, TYPE_CHECKING)
+          - re          : Validação de nomes por expressão regular
+          - os          : Limpeza de terminal e path
+          - sys         : Manipulação do sys.path
+    -->
+    <dependencies>
+        <!-- Nenhuma dependência externa necessária -->
+    </dependencies>
+
+    <!-- ── Build / Execução ─────────────────────────────────────────────── -->
+    <build>
+        <sourceDirectory>src/main/py</sourceDirectory>
+        <!--
+            Para executar o projeto Python:
+                python src/main/py/Main.py
+
+            Ou com o script de execução (Windows):
+                .\run.bat
+
+            Ou (Unix/macOS/Linux):
+                ./run.sh
+        -->
+    </build>
+
+</project>
