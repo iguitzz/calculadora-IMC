@@ -34,17 +34,14 @@ COR_RESET     = "\033[0m"
 
 
 def limpar_tela():
-    """Limpa o terminal (compatível com Windows e Unix)."""
     os.system("cls" if os.name == "nt" else "clear")
 
 
 def cor(texto: str, codigo: str) -> str:
-    """Aplica código de cor ANSI ao texto."""
     return f"{codigo}{texto}{COR_RESET}"
 
 
 def cabecalho():
-    """Exibe o cabeçalho estilizado da aplicação."""
     print(cor(f"\n  {LINHA}", COR_TITULO))
     print(cor("  ║  🏋️  CALCULADORA DE IMC — CLI                           ║", COR_TITULO))
     print(cor("  ║  Índice de Massa Corporal com Suporte a Atletas          ║", COR_TITULO))
@@ -52,7 +49,6 @@ def cabecalho():
 
 
 def separador(titulo: str = ""):
-    """Imprime um separador com título opcional."""
     if titulo:
         print(cor(f"\n  ── {titulo} {'─' * (56 - len(titulo))}", COR_DESTAQUE))
     else:
@@ -60,7 +56,6 @@ def separador(titulo: str = ""):
 
 
 def menu_principal() -> str:
-    """Exibe o menu interativo e retorna a opção escolhida."""
     print(cor(f"  {LINHA2}", COR_INFO))
     print(cor("  MENU PRINCIPAL", COR_TITULO))
     print(cor(f"  {LINHA2}\n", COR_INFO))
@@ -88,7 +83,6 @@ def menu_principal() -> str:
 # ── Utilitários de leitura de entradas ──────────────────────────────────────
 
 def ler_nome(prompt: str = "Nome") -> str:
-    """Lê e valida um nome do usuário."""
     while True:
         try:
             valor = input(f"  {prompt}: ").strip()
@@ -102,7 +96,6 @@ def ler_nome(prompt: str = "Nome") -> str:
 
 
 def ler_idade(prompt: str = "Idade (anos)") -> int:
-    """Lê e valida uma idade do usuário."""
     while True:
         try:
             valor = input(f"  {prompt}: ").strip()
@@ -119,7 +112,6 @@ def ler_idade(prompt: str = "Idade (anos)") -> int:
 
 
 def ler_peso(prompt: str = "Peso em kg (ex.: 70.5)") -> float:
-    """Lê e valida um peso do usuário."""
     while True:
         try:
             valor = input(f"  {prompt}: ").strip().replace(",", ".")
@@ -136,7 +128,6 @@ def ler_peso(prompt: str = "Peso em kg (ex.: 70.5)") -> float:
 
 
 def ler_altura(prompt: str = "Altura em metros (ex.: 1.75)") -> float:
-    """Lê e valida uma altura do usuário."""
     while True:
         try:
             valor = input(f"  {prompt}: ").strip().replace(",", ".")
@@ -153,7 +144,6 @@ def ler_altura(prompt: str = "Altura em metros (ex.: 1.75)") -> float:
 
 
 def ler_esporte(prompt: str = "Esporte praticado (ex.: Natação)") -> str:
-    """Lê e valida o esporte de um atleta."""
     while True:
         try:
             valor = input(f"  {prompt}: ").strip()
@@ -165,7 +155,6 @@ def ler_esporte(prompt: str = "Esporte praticado (ex.: Natação)") -> str:
 
 
 def ler_nivel(prompt: str = "Nível") -> str:
-    """Lê e valida o nível de treinamento de um atleta."""
     niveis = Atleta.NIVEIS_VALIDOS
     while True:
         print(f"\n  Níveis disponíveis:")
@@ -184,7 +173,6 @@ def ler_nivel(prompt: str = "Nível") -> str:
 # ── Ações do menu ───────────────────────────────────────────────────────────
 
 def cadastrar_pessoa(sistema: SistemaIMC):
-    """Coleta dados e cria um objeto Pessoa via SistemaIMC."""
     separador("Cadastrar Pessoa Comum")
     print(cor("  Preencha os dados da pessoa:\n", COR_INFO))
 
@@ -198,7 +186,6 @@ def cadastrar_pessoa(sistema: SistemaIMC):
 
 
 def cadastrar_atleta(sistema: SistemaIMC):
-    """Coleta dados e cria um objeto Atleta via SistemaIMC."""
     separador("Cadastrar Atleta")
     print(cor(
         "  ⚡  Atletas possuem tabela de IMC diferenciada\n"
@@ -219,7 +206,6 @@ def cadastrar_atleta(sistema: SistemaIMC):
 
 
 def selecionar_pessoa(sistema: SistemaIMC):
-    """Exibe a lista de pessoas e permite o usuário selecionar uma."""
     pessoas = sistema.listar_pessoas()
     if not pessoas:
         raise NenhumaCadastraError()
@@ -245,7 +231,6 @@ def selecionar_pessoa(sistema: SistemaIMC):
 
 
 def calcular_e_exibir(sistema: SistemaIMC):
-    """Permite selecionar uma pessoa, calcula o IMC e salva no histórico."""
     separador("Calcular IMC")
 
     pessoa = selecionar_pessoa(sistema)
@@ -265,14 +250,12 @@ def calcular_e_exibir(sistema: SistemaIMC):
 
 
 def exibir_historico(sistema: SistemaIMC):
-    """Exibe o histórico completo de cálculos."""
     separador("Histórico de Cálculos")
     print()
     print(sistema.obter_historico().exibir())
 
 
 def exibir_estatisticas(sistema: SistemaIMC):
-    """Exibe estatísticas do histórico e dados recursivos."""
     separador("Estatísticas da Sessão")
     print()
     print(sistema.obter_historico().estatisticas())
@@ -288,7 +271,6 @@ def exibir_estatisticas(sistema: SistemaIMC):
 
 
 def exibir_relatorio_recursivo(sistema: SistemaIMC):
-    """Exibe o relatório de classificações gerado recursivamente."""
     separador("Relatório Recursivo de Classificações")
 
     pessoas = sistema.listar_pessoas()
@@ -303,7 +285,6 @@ def exibir_relatorio_recursivo(sistema: SistemaIMC):
 
 
 def limpar_historico(sistema: SistemaIMC):
-    """Limpa o histórico após confirmação do usuário."""
     separador("Limpar Histórico")
     hist = sistema.obter_historico()
 
@@ -322,7 +303,6 @@ def limpar_historico(sistema: SistemaIMC):
 
 
 def exibir_sobre():
-    """Exibe informações sobre o sistema e as tabelas de classificação."""
     separador("Sobre o Sistema")
 
     print(cor("""
@@ -367,12 +347,7 @@ def exibir_sobre():
 # ── Loop principal ──────────────────────────────────────────────────────────
 
 def executar():
-    """
-    Loop principal do sistema.
 
-    Mantém o menu ativo até o usuário escolher a opção de saída (0).
-    Trata exceções personalizadas e erros inesperados sem encerrar o programa.
-    """
     sistema = SistemaIMC()  # COMPOSIÇÃO: orquestra Pessoa, Atleta, Historico
 
     limpar_tela()
