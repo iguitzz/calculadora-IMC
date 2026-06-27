@@ -1,12 +1,3 @@
-"""
-Interface CalculadoraIMC — define o contrato que o sistema deve implementar.
-
-Conceito aplicado:
-  - Interface (via ABC): garante que qualquer implementação do sistema
-    exponha os mesmos métodos públicos, facilitando substituições futuras
-    (ex.: versão GUI, versão web etc.).
-"""
-
 from abc import ABC, abstractmethod
 from typing import List, TYPE_CHECKING
 
@@ -16,13 +7,7 @@ if TYPE_CHECKING:
     from Historico import Historico
 
 
-class CalculadoraIMC(ABC):
-    """
-    Interface que define os métodos obrigatórios de qualquer
-    implementação de sistema de cálculo de IMC.
-
-    Implementações concretas: SistemaIMC (CLI).
-    """
+class CalculadoraIMC(ABC):    
 
     @abstractmethod
     def cadastrar_pessoa(self, nome: str, idade: int, peso: float, altura: float) -> "Pessoa":
