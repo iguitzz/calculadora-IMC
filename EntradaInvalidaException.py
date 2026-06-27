@@ -1,18 +1,3 @@
-"""
-Módulo de exceções personalizadas para o sistema de Calculadora de IMC.
-
-Hierarquia:
-    EntradaInvalidaException (base)
-    ├── PesoInvalidoError
-    ├── AlturaInvalidaError
-    ├── IdadeInvalidaError
-    ├── NomeInvalidoError
-    ├── EsporteInvalidoError
-    ├── OpcaoInvalidaError
-    └── NenhumaCadastraError
-"""
-
-
 class EntradaInvalidaException(Exception):
     """Classe base para todas as exceções do sistema de IMC."""
 
