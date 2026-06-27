@@ -1,6 +1,5 @@
 class EntradaInvalidaException(Exception):
-    """Classe base para todas as exceções do sistema de IMC."""
-
+   
     def __init__(self, mensagem: str):
         self.mensagem = mensagem
         super().__init__(self.mensagem)
@@ -14,8 +13,7 @@ IMCBaseError = EntradaInvalidaException
 
 
 class PesoInvalidoError(EntradaInvalidaException):
-    """Levantada quando o peso informado é inválido."""
-
+  
     def __init__(self, peso=None):
         if peso is not None:
             mensagem = (
@@ -42,7 +40,6 @@ class AlturaInvalidaError(EntradaInvalidaException):
 
 
 class IdadeInvalidaError(EntradaInvalidaException):
-    """Levantada quando a idade informada é inválida."""
 
     def __init__(self, idade=None):
         if idade is not None:
@@ -56,8 +53,7 @@ class IdadeInvalidaError(EntradaInvalidaException):
 
 
 class NomeInvalidoError(EntradaInvalidaException):
-    """Levantada quando o nome informado é inválido."""
-
+   
     def __init__(self, nome=None):
         if nome is not None and isinstance(nome, str) and nome.strip() == "":
             mensagem = "Nome inválido: o nome não pode ser vazio ou conter apenas espaços."
@@ -72,8 +68,7 @@ class NomeInvalidoError(EntradaInvalidaException):
 
 
 class OpcaoInvalidaError(EntradaInvalidaException):
-    """Levantada quando o usuário digita uma opção de menu inválida."""
-
+    
     def __init__(self, opcao=None):
         if opcao is not None:
             mensagem = f"Opção '{opcao}' não reconhecida. Por favor, escolha uma opção válida do menu."
@@ -83,7 +78,6 @@ class OpcaoInvalidaError(EntradaInvalidaException):
 
 
 class NenhumaCadastraError(EntradaInvalidaException):
-    """Levantada quando não há pessoas cadastradas para realizar operações."""
 
     def __init__(self):
         super().__init__(
@@ -92,7 +86,6 @@ class NenhumaCadastraError(EntradaInvalidaException):
 
 
 class EsporteInvalidoError(EntradaInvalidaException):
-    """Levantada quando o esporte informado para um atleta é inválido."""
 
     def __init__(self, esporte=None):
         if esporte is not None:
