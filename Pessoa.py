@@ -92,7 +92,7 @@ class Pessoa(PessoaBase):
     # ── Implementação dos métodos abstratos ──────────────────────────────────
 
     def calcular_imc(self) -> float:
-        """Calcula e retorna o IMC: Peso / Altura²."""
+
         return self._peso / (self._altura ** 2)
 
     def classificar(self) -> str:
