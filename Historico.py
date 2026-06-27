@@ -1,12 +1,3 @@
-"""
-Módulo Historico — armazena registros de IMC da sessão atual.
-
-Conceito aplicado:
-  - Composição: Historico é composto por objetos RegistroIMC,
-    que por sua vez referenciam objetos Pessoa (ou Atleta).
-    Historico NÃO herda de Pessoa — ele *possui* pessoas.
-"""
-
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import List, TYPE_CHECKING
@@ -16,13 +7,7 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class RegistroIMC:
-    """
-    Representa um único cálculo de IMC registrado no histórico.
-
-    Conceito: dataclass usada para manter simplicidade e imutabilidade
-    dos registros — um cálculo feito no passado não deve ser alterado.
-    """
+class RegistroIMC:  
 
     pessoa: "Pessoa"
     imc: float
@@ -38,13 +23,6 @@ class RegistroIMC:
 
 
 class Historico:
-    """
-    COMPOSIÇÃO: armazena e gerencia os registros de IMC da sessão.
-
-    Historico é composto por uma lista de RegistroIMC.
-    Ele não sabe nem se importa se a pessoa é Pessoa ou Atleta —
-    apenas chama os métodos da interface comum (polimorfismo transparente).
-    """
 
     def __init__(self):
         self._registros: List[RegistroIMC] = []
@@ -52,15 +30,7 @@ class Historico:
     # ── Métodos públicos ────────────────────────────────────────────────────
 
     def adicionar(self, pessoa: "Pessoa") -> RegistroIMC:
-        """
-        Calcula o IMC da pessoa, classifica e armazena no histórico.
-
-        Args:
-            pessoa: Objeto Pessoa (ou subclasse — polimorfismo em ação).
-
-        Returns:
-            O RegistroIMC criado e armazenado.
-        """
+       
         imc = pessoa.calcular_imc()
         classificacao = pessoa.classificar()  # ← polimorfismo: Atleta retorna classificação diferente
         registro = RegistroIMC(pessoa=pessoa, imc=imc, classificacao=classificacao)
@@ -68,26 +38,21 @@ class Historico:
         return registro
 
     def listar(self) -> List[RegistroIMC]:
-        """Retorna a lista de registros em ordem cronológica."""
+      
         return list(self._registros)
 
     def limpar(self) -> int:
-        """Limpa o histórico. Retorna a quantidade de registros removidos."""
+       
         quantidade = len(self._registros)
         self._registros.clear()
         return quantidade
 
     def total(self) -> int:
-        """Retorna a quantidade total de registros no histórico."""
+       
         return len(self._registros)
 
     def exibir(self) -> str:
-        """
-        Gera uma string formatada com todo o histórico da sessão.
-
-        Returns:
-            String multilinha com todos os registros, ou mensagem de vazio.
-        """
+        
         if not self._registros:
             return "  Nenhum cálculo realizado nesta sessão ainda."
 
@@ -104,12 +69,7 @@ class Historico:
         return "\n".join(linhas)
 
     def estatisticas(self) -> str:
-        """
-        Gera estatísticas básicas do histórico da sessão.
-
-        Returns:
-            String com média, maior e menor IMC registrado.
-        """
+       
         if not self._registros:
             return "  Sem dados para calcular estatísticas."
 
