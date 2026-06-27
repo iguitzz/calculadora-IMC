@@ -1,12 +1,3 @@
-"""
-Classe Pessoa — representa uma pessoa comum para cálculo de IMC.
-
-Conceitos aplicados:
-  - Herança: herda de PessoaBase (classe abstrata)
-  - Encapsulamento: atributos validados via @property (getters/setters)
-  - Polimorfismo: classificar() é sobrescrito por subclasses como Atleta
-"""
-
 import re
 from PessoaBase import PessoaBase
 from EntradaInvalidaException import (
@@ -18,19 +9,7 @@ from EntradaInvalidaException import (
 
 
 class Pessoa(PessoaBase):
-    """
-    Representa uma pessoa comum para fins de cálculo de IMC.
-
-    Implementa todos os métodos abstratos de PessoaBase e adiciona
-    validação completa via setters (encapsulamento).
-
-    Atributos:
-        _nome   (str)   : Nome completo da pessoa.
-        _idade  (int)   : Idade em anos.
-        _peso   (float) : Peso em quilogramas.
-        _altura (float) : Altura em metros.
-    """
-
+ 
     # Tabela de classificação da OMS para pessoas comuns
     _TABELA_OMS = [
         (18.5, "Abaixo do peso"),
@@ -117,10 +96,7 @@ class Pessoa(PessoaBase):
         return self._peso / (self._altura ** 2)
 
     def classificar(self) -> str:
-        """
-        Classifica o IMC conforme a tabela da OMS.
-        Este método é polimórfico — subclasses podem sobrescrevê-lo.
-        """
+       
         imc = self.calcular_imc()
         for limite, classificacao in self._TABELA_OMS:
             if imc < limite:
@@ -128,11 +104,9 @@ class Pessoa(PessoaBase):
         return "Obesidade Grau III"
 
     def tipo(self) -> str:
-        """Retorna o tipo de pessoa (para exibição no histórico)."""
         return "Pessoa"
 
     def resumo(self) -> str:
-        """Retorna um resumo formatado dos dados da pessoa."""
         imc = self.calcular_imc()
         classificacao = self.classificar()
         return (
