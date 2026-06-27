@@ -1,21 +1,3 @@
-"""
-╔══════════════════════════════════════════════════════════════════╗
-║         CALCULADORA DE IMC — Sistema via Linha de Comando        ║
-║                                                                  ║
-║  Conceitos de POO demonstrados:                                  ║
-║    • Encapsulamento  — atributos protegidos com getters/setters  ║
-║    • Herança         — Atleta extends Pessoa extends PessoaBase  ║
-║    • Polimorfismo    — classificar() com comportamentos distintos ║
-║    • Composição      — SistemaIMC composto por Historico         ║
-║    • Interface       — CalculadoraIMC (contrato abstrato)        ║
-║    • Recursão        — CalculadoraRecursiva                      ║
-║    • Exceções custom — hierarquia EntradaInvalidaException       ║
-╚══════════════════════════════════════════════════════════════════╝
-
-Ponto de entrada da aplicação. Execute com:
-    python Main.py
-"""
-
 import os
 import sys
 import re
