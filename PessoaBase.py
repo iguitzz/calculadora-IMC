@@ -1,31 +1,8 @@
-"""
-Classe abstrata PessoaBase — define a interface comum a todas as pessoas.
-
-Conceitos aplicados:
-  - Abstração: métodos abstratos obrigam subclasses a implementar o contrato
-  - Encapsulamento: atributos protegidos acessados via @property
-"""
-
 from abc import ABC, abstractmethod
 
 
 class PessoaBase(ABC):
-    """
-    Classe abstrata que define o contrato para qualquer tipo de pessoa
-    que possa ter seu IMC calculado.
-
-    Subclasses concretas devem implementar:
-        - calcular_imc()  → float
-        - classificar()   → str
-        - tipo()          → str
-        - resumo()        → str
-    """
-
-    def __init__(self, nome: str, idade: int, peso: float, altura: float):
-        """
-        Inicializa os atributos comuns. As validações ficam nos setters
-        das subclasses concretas.
-        """
+    def __init__(self, nome: str, idade: int, peso: float, altura: float):      
         self._nome: str = nome
         self._idade: int = idade
         self._peso: float = peso
