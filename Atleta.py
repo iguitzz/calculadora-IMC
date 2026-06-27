@@ -1,30 +1,9 @@
-"""
-Classe Atleta — herda de Pessoa e sobrescreve classificar() (polimorfismo).
-
-Conceitos aplicados:
-  - Herança: Atleta estende Pessoa, reaproveitando calcular_imc() e validações
-  - Polimorfismo: classificar() usa tabela diferenciada para atletas,
-    pois a massa muscular elevada distorce o IMC padrão da OMS
-  - super(): usado no __init__ para inicializar atributos herdados
-"""
-
 from Pessoa import Pessoa
 from EntradaInvalidaException import EsporteInvalidoError
 
 
 class Atleta(Pessoa):
-    """
-    Representa um atleta profissional ou de alta performance.
-
-    Herda de Pessoa todos os atributos e o método calcular_imc().
-    Sobrescreve classificar() com uma tabela adaptada para atletas,
-    pois a massa muscular mais elevada eleva o IMC sem indicar obesidade.
-
-    Atributos adicionais:
-        _esporte (str) : Modalidade esportiva praticada.
-        _nivel   (str) : Nível de treinamento (Amador / Semiprofissional / Profissional).
-    """
-
+  
     # Tabela de IMC adaptada para atletas (considera maior massa muscular)
     _TABELA_ATLETA = [
         (17.0, "Abaixo do peso (atleta — risco de deficiência nutricional)"),
@@ -80,12 +59,7 @@ class Atleta(Pessoa):
     # ── Polimorfismo ────────────────────────────────────────────────────────
 
     def classificar(self) -> str:
-        """
-        POLIMORFISMO: sobrescreve o método da classe pai (Pessoa).
-
-        Utiliza a tabela adaptada para atletas, pois o IMC padrão
-        superestima a gordura corporal em indivíduos com alta massa muscular.
-        """
+        
         imc = self.calcular_imc()
         for limite, classificacao in self._TABELA_ATLETA:
             if imc < limite:
@@ -93,11 +67,11 @@ class Atleta(Pessoa):
         return "Obesidade (atleta — consulte um médico especialista)"
 
     def tipo(self) -> str:
-        """Sobrescreve tipo() para identificação no histórico."""
+      
         return f"Atleta ({self._nivel})"
 
     def resumo(self) -> str:
-        """Sobrescreve resumo() para incluir dados extras do atleta."""
+       
         imc = self.calcular_imc()
         classificacao = self.classificar()
         return (
