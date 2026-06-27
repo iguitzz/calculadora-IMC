@@ -16,7 +16,6 @@ class SistemaIMC(CalculadoraIMC):
     # ── Implementação da interface CalculadoraIMC ────────────────────────────
 
     def cadastrar_pessoa(self, nome: str, idade: int, peso: float, altura: float) -> Pessoa:
-        """Cria e registra uma Pessoa no sistema."""
         pessoa = Pessoa(nome, idade, peso, altura)
         self._pessoas.append(pessoa)
         return pessoa
@@ -30,7 +29,6 @@ class SistemaIMC(CalculadoraIMC):
         esporte: str,
         nivel: str = "Profissional",
     ) -> Atleta:
-        """Cria e registra um Atleta no sistema."""
         atleta = Atleta(nome, idade, peso, altura, esporte, nivel)
         self._pessoas.append(atleta)
         return atleta
@@ -39,11 +37,9 @@ class SistemaIMC(CalculadoraIMC):
         return self._historico.adicionar(pessoa)
 
     def obter_historico(self) -> Historico:
-        """Retorna o histórico de cálculos da sessão."""
         return self._historico
 
     def listar_pessoas(self) -> List[Pessoa]:
-        """Retorna a lista de pessoas cadastradas (cópia defensiva)."""
         return list(self._pessoas)
 
     # ── Métodos de estatísticas (usa CalculadoraRecursiva) ───────────────────
